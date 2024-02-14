@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
-function App() {
+function App({message="You message", className, timeout=2000}) {
+  const [isShow, setIsShow] = useState(true);
+  useEffect(() => {
+    const clearTime = setTimeout(() => {
+        setIsShow(false);
+    }, timeout);
+    return () => clearTimeout(clearTime);
+  }, [timeout])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    isShow ?
+    <div onClick={() => setIsShow(false)} className={`cursor-pointer fixed bottom-5 left-5 p-3 rounded-md bg-dark text-white ${className}`}>
+      {message}
     </div>
+    :
+    null
   );
 }
 
