@@ -2,7 +2,7 @@
   "name": "codmen-toast",
   "description": "Your taost library which worked on tailwind css classes",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "main": "./build/index.js",
   "author": {
     "name": "Amit Sharma"
